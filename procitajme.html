@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>WordPress &#8250; PročitajMe</title>
+	<link rel="stylesheet" href="wp-admin/css/install.css?ver=20100228" type="text/css" />
+</head>
+<body>
+<h1 id="logo">
+	<a href="https://wordpress.org/"><img alt="WordPress" src="wp-admin/images/wordpress-logo.png" /></a>
+</h1>
+<p style="text-align: center">Semantička osobna platforma za objavljivanje</p>
+
+<h2>Prvo ono najvažnije</h2>
+<p>Dobro došli. WordPress je za mene vrlo poseban projekt. Svaki programer i suradnik dodaje nešto jedinstveno u njega, i zajedno smo stvorili nešto prelijepo. Ponosan sam što sam dio toga. Tisuće sati su utrošene u WordPress i mi ga stalno nastojimo učiniti još boljim, svaki dan. Hvala vam što ste WordPress učinili dijelom vašeg svijeta.</p>
+<p style="text-align: right">&#8212; Matt Mullenweg</p>
+
+<h2>Instalacija: Poznata petominutna instalacija</h2>
+<ol>
+	<li>Raspakirajte paket u praznu mapu i prenesite sve na poslužitelj.</li>
+	<li>Otvorite <span class="file"><a href="wp-admin/install.php">wp-admin/install.php</a></span> u vašem web pregledniku. Instalacija će vas provesti kroz proces popunjavanja vaše <code>wp-config.php</code> datoteke s detaljima za povezivanje s bazom podataka.
+		<ol>
+			<li>Ako zbog nekog razloga ovo ne funkcionira, ne brinite. Ne funkcionira uvijek na svim web hostovima. Otvorite <code>wp-config-sample.php</code> u nekom uređivaču teksta kao što su WordPad ili neki slični i unesite detalje za povezivanje s vašom bazom podataka.</li>
+			<li>Snimite datoteku kao <code>wp-config.php</code> i prenesite ju na poslužitelj.</li>
+			<li>Otvorite <span class="file"><a href="wp-admin/install.php">wp-admin/install.php</a></span> u vašem web pregledniku.</li>
+		</ol>
+	</li>
+	<li>Nakon što je konfiguracijska datoteka namještena, instalacija će postaviti tablice potrebne za vaš blog. Ako se pojave greške, još jednom provjerite vašu <code>wp-config.php</code> datoteku, i pokušajte ponovno. Ako ponovno dođe do greške, molimo vas posjetite <a href="https://wordpress.org/support/" title="WordPress support">forume podrške</a> sa što više prikupljenih podataka o pojavljenim greškama.</li>
+	<li><strong>Ako niste upisali lozinku, zapamtite lozinku koja će vam biti dodijeljena.</strong> Ako niste upisali korisničko ime, ono će biti <code>admin</code>.</li>
+	<li>Nakon toga, instalacija bi vas trebala usmjeriti na <a href="wp-login.php">stranicu za prijavu</a>. Prijavite se s korisničkim imenom i lozinkom koje ste izabrali tijekom instalacije. Ako je lozinka generirana za vas, onda možete kliknuti na &#8220;Profil&#8221; kako bi promijenili lozinku.</li>
+</ol>
+
+<h2>Nadogradnja</h2>
+<h3>Upotreba automatske nadogradnje</h3>
+<p>Ako nadograđujete s inačice 2.7 ili novije, možete upotrijebiti automatsku nadogradnju:</p>
+<ol>
+	<li>Otvorite <span class="file"><a href="wp-admin/update-core.php">wp-admin/update-core.php</a></span> u vašem web pregledniku i slijedite upute.</li>
+	<li>Očekivali ste možda više? To je sve!</li>
+</ol>
+
+<h3>Ručna nadogradnja</h3>
+<ol>
+	<li>Prije nego što bilo što nadogradite, obavezno napravite sigurnosne kopije svih datoteka koje ste možda mijenjali, kao što je <code>index.php</code>.</li>
+	<li>Obrišite vaše stare WordPress datoteke, sačuvajte samo one koje ste mijenjali.</li>
+	<li>Prenesite nove datoteke.</li>
+	<li>Usmjerite vaš web preglednik na <span class="file"><a href="wp-admin/upgrade.php">/wp-admin/upgrade.php</a>.</span></li>
+</ol>
+
+<h2>Migracija s drugih sistema</h2>
+<p>WordPress podržava <a href="https://codex.wordpress.org/Importing_Content">uvoz s velikog broja sistema</a>. Prvo trebate instalirati i pokrenuti WordPress onako kako je to objašnjeno iznad, prije korištenja <a href="wp-admin/import.php" title="Uvoz u WordPress">naših uvoznih alata</a>.</p>
+
+<h2>Sistemski zahtijevi</h2>
+<ul>
+	<li><a href="https://secure.php.net/">PHP</a> inačica <strong>5.2.4</strong> ili novija.</li>
+	<li><a href="https://www.mysql.com/">MySQL</a> inačica <strong>5.0</strong> ili novija.</li>
+</ul>
+
+<h3>Sistemske preporuke</h3>
+<ul>
+	<li><a href="https://secure.php.net/">PHP</a> inačica <strong>7.2</strong> ili novija.</li>
+	<li><a href="https://www.mysql.com/">MySQL</a> inačica <strong>5.6</strong> ili novija.</li>
+	<li>Imati <a href="https://httpd.apache.org/docs/2.2/mod/mod_rewrite.html">mod_rewrite</a> Apache modul.</li>
+	<li><a href="https://wordpress.org/news/2016/12/moving-toward-ssl/">HTTPS</a> podržan.</li>
+	<li>Poveznica prema <a href="https://wordpress.org/">wordpress.org</a> na vašoj web-stranici.</li>
+</ul>
+
+<h2>Izvori na internetu</h2>
+<p>Ako imate bilo kakvih pitanja na koja ne možete naći odgovore u ovom dokumentu, molimo vas da pogledate brojne WordPressove izvore na internetu:</p>
+<dl>
+	<dt><a href="https://codex.wordpress.org/">WordPress Codex</a></dt>
+		<dd>Codex je WordPress enciklopedija. To je najbolji dostupan izvor informacija vezanih za WordPress.</dd>
+	<dt><a href="https://wordpress.org/news/">WordPress Blog</a></dt>
+		<dd>Ovdje ćete pronaći najnovije nadogradnje i vijesti vezane za WordPress. Svježe WordPress vijesti se pojavljuju na vašoj administrativnoj nadzornoj ploči.</dd>
+	<dt><a href="https://planet.wordpress.org/">WordPress Planet</a></dt>
+		<dd>WordPress Planet vam donosi vijesti i članke s svih WordPress blogova širom weba.</dd>
+	<dt><a href="https://wordpress.org/support/">WordPress forumi podrške</a></dt>
+		<dd>Ako ste tražili svugdje i još ne možete pronaći odgovor, forumi podrške su vrlo aktivni i imaju veliku zajednicu koja je spremna pomoći. Da biste im pomogli u rješavanju vašeg problema napišite opisiv naslov teme i što više detalja o vašem problemu.</dd>
+	<dt><a href="https://codex.wordpress.org/IRC">WordPress <abbr title="Internet Relay Chat">IRC</abbr> kanal</a></dt>
+		<dd>Postoji i online kanal za čavrljanje koji se koristi za raspravu između ljudi koji koriste WordPress i povremeno za teme podrške. Gore navedena wiki stranica trebala bi vas usmjeriti u pravom smjeru. (<a href="irc://irc.freenode.net/wordpress">irc.freenode.net #wordpress</a>)</dd>
+</dl>
+
+<h2>Završne bilješke</h2>
+<ul>
+	<li>Ako imate ikakve prijedloge, ideje, komentare ili ste (khmm!) pronašli grešku, pridružite nam se na <a href="https://wordpress.org/support/">forumima podrške</a>.</li>
+	<li>WordPress ima robustan dodatak (plugin) <abbr title="application programming interface">API</abbr> koji čini proširivanje koda lakim. Ako ste programer i zainteresirani ste za korištenje ove mogućnosti molimo vas da pogledate <a href="https://developer.wordpress.org/plugins/" title="WordPress plugin API">dokumentaciju o dodacima (plugin)</a>. Ne bi trebali mijenjati bilo koji dio koda jezgre.</li>
+</ul>
+
+<h2>Širite ljubav</h2>
+<p>WordPress nema višemilijunski vrijednu marketing kampanju ili poznate sponzore, ali imamo nešto puno bolje&#8212;vas. Ako uživate u korištenju WordPressa molimo vas da to uzmete u obzir i kažete o tome prijatelju, pomognete u postavljanju WordPressa nekome tko o tome manje zna nego vi, ili pisanju autoru nekog medijskog članka koji nas je previdio.</p>
+
+<p>WordPress je službeni nastavak <a href="http://cafelog.com/">b2/caf&#233;log</a>, kojeg je stvorio Michel V. Rad su nastavili <a href="https://wordpress.org/about/">WordPress programeri</a>. Ako želite poduprijeti WordPress, molimo razmislite o <a href="https://wordpress.org/donate/" title="Donirajte WordPress">donaciji</a>.</p>
+
+<h2>Licenca</h2>
+<p>WordPress je besplatan softver, i izdan je pod uvjetima <abbr title="GNU Opće javne licence">GPL</abbr> inačice 2 ili (po mogućnosti) nekoj novijoj inačici. Pogledajte <a href="licenca.txt">licenca.txt</a>.</p>
+
+</body>
+</html>
