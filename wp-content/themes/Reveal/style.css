@@ -12,9 +12,13 @@
 
 
 #team .member h4 a{
-  color: white !important;
+  color: #fff !important;
 }
 
-#portfolio, #team{
+#team .member span{
+  min-height:40px !important;
+}
+
+#portfolio, #team, #portfolio{
   background: none !important;
 }

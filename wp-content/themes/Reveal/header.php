@@ -7,39 +7,39 @@
 	<?php wp_head(); ?>
 </head>
 <body id="body">
-
- <!--==========================
-    Top Bar
-  ============================-->
-  <section id="topbar" class="d-none d-lg-block">
-    <div class="container clearfix">
-      <div class="contact-info float-left">
-        <i class="fa fa-envelope-o"></i> <a href="mailto:contact@example.com">contact@example.com</a>
-        <i class="fa fa-phone"></i> +1 5589 55488 55
-      </div>
-      <div class="social-links float-right">
-        <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-        <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-        <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
-        <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
-        <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
-      </div>
-    </div>
-  </section>
-
   <!--==========================
     Header
   ============================-->
   <header id="header">
     <div class="container">
-
+    <?php 
+      $sUrlNaslovnica = get_site_url();
+    ?>
       <div id="logo" class="pull-left">
-        <h1><a href="#body" class="scrollto">Reve<span>al</span></a></h1>
+        <h1><a href="<?php echo $sUrlNaslovnica ?>" class="scrollto">Pied<span>Piper</span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="#body"><img src="img/logo.png" alt="" title="" /></a>-->
       </div>
 
       <nav id="nav-menu-container">
+      <?php $args = array(
+        'theme_location' => 'glavni-menu',
+        'menu_class' => 'nav-menu',
+        'container' => 'ul',    
+        'container_id' => false,
+        'container_class' => 'nav'
+      );
+      wp_nav_menu( $args );
+      ?>
+
+
+      </nav>
+
+
+      
+ 
+
+      <!-- <nav id="nav-menu-container">
         <ul class="nav-menu">
           <li class="menu-active"><a href="#body">Home</a></li>
           <li><a href="#about">About Us</a></li>
@@ -56,6 +56,6 @@
           </li>
           <li><a href="#contact">Contact</a></li>
         </ul>
-      </nav><!-- #nav-menu-container -->
+      </nav>#nav-menu-container -->
     </div>
   </header><!-- #header -->
