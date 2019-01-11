@@ -53,13 +53,24 @@
 	}
 	add_action( 'wp_enqueue_scripts', 'ucitaj_glavne_js', 1 );
 
-	function ucitaj_select2()
+
+
+function ucitaj_select2_zaposlenici()
 {
 	wp_enqueue_style( 'select2css', get_template_directory_uri() . '/assets/select2/select2.min.css' );
 	wp_enqueue_script('select2js', get_template_directory_uri().'/assets/select2/select2.min.js', array('jquery'), true);
-	wp_enqueue_script('select2-admin-js', get_template_directory_uri().'/js/init_select2.js', array('jquery'), true);
+	wp_enqueue_script('select2-admin_projekt-js', get_template_directory_uri().'/js/zaposlenici_select2.js', array('jquery'), true);
 }
-add_action( 'admin_enqueue_scripts', 'ucitaj_select2' );
+add_action( 'admin_enqueue_scripts', 'ucitaj_select2_zaposlenici' );
+
+function ucitaj_select2_projekti()
+{
+	wp_enqueue_style( 'select2css', get_template_directory_uri() . '/assets/select2/select2.min.css' );
+	wp_enqueue_script('select2js', get_template_directory_uri().'/assets/select2/select2.min.js', array('jquery'), true);
+	wp_enqueue_script('select2-admin_zaposlenik-js', get_template_directory_uri().'/js/projekti_select2.js', array('jquery'), true);
+}
+add_action( 'admin_enqueue_scripts', 'ucitaj_select2_projekti' );
+
 
 
 	function registriraj_zaposlenike_cpt() 
@@ -296,7 +307,7 @@ add_action( 'admin_enqueue_scripts', 'ucitaj_select2' );
 				  <div class="member">
 				  <div class="pic"><a href="'.$ZaposlenikUrl.'"><img src="'.$sIstaknutaSlika.'" alt=""></a></div>
 						<div class="details">
-						<h4><a href="'.$ZaposlenikUrl.'">'.$ZaposlenikNaziv.'</a></h4>
+						<h4>'.$ZaposlenikNaziv.'</h4>
 				<span>'.$ZaposlenikTitula.'</span>
 				<div class="social">
 				<a href=""><i class="fa fa-twitter"></i></a>
@@ -319,22 +330,130 @@ add_action( 'admin_enqueue_scripts', 'ucitaj_select2' );
 			'post_status' => 'publish'
 
 			);
+			$sIstaknutaSlika = get_template_directory_uri(). '/img/portfolio/4.jpg';
 			$portfolio = get_posts( $args );
 			foreach ($portfolio as $p)
 			{
 				$PortfolioUrl = $p->guid;
 				$PortfolioNaziv = $p->post_title;
 				$sHtml .= '
-				<div class="col-lg-3 col-md-4">
+				<div class="col-lg-3 col-md-4 portfolio_container">
 				<div class="portfolio-item wow fadeInUp">
+				<a href="'.$PortfolioUrl.'" class="portfolio-popup">
+				<img src="'.$sIstaknutaSlika.'" alt="">
 				<div class="portfolio-overlay">
-				<div class="portfolio-info"><h2 class="wow fadeInUp"><a href="'.$PortfolioUrl.'">'.$PortfolioNaziv.'</a></h2><span>Taksonomija ovdje</span></div>					
-                </div>
-            </div>
-          </div';
+				<div class="portfolio-info"><h2 class="wow fadeInUp">'.$PortfolioNaziv.'</h2></div>
+			  </div>
+			  </a>
+				</div>
+			  </div>';
 			}
 			return $sHtml;
 		}
 
+		function add_meta_box_istaknuti_projekti_zaposlenika(){
+			add_meta_box('pp_istaknuti_projekti', 'Istaknuti projekti zaposlenika', 'html_meta_box_istaknuti_projekti_zaposlenika', 'zaposlenik','normal','low');
+		}
+
+		add_action( 'add_meta_boxes', 'add_meta_box_istaknuti_projekti_zaposlenika' );
+
+		function html_meta_box_istaknuti_projekti_zaposlenika(){
+			wp_nonce_field('spremi_istaknuti_projekt_zaposlenika', 'istaknuti_projekti_zaposlenika_nonce');
+
+			$projekti_ids = get_post_meta($post->ID, 'istaknuti_projekti_zaposlenika', true);
+			
+			$projekti_ids = explode(',',$projekti_ids);
+
+			$args = array(
+				'posts_per_page'  => -1,
+				'post_type'		  => 'portfolio',
+				'post_status'     => 'publish'
+			);
+
+			$projekti = get_posts( $args );
+
+			$projekti_form = '<select name="projekti[]" id="projekti[]" class="s2p" multiple>';
+
+			foreach ($projekti as $projekt){
+				$selected_text = (in_array($projekt->ID, $projekti_ids)) ? "selected" : "" ;
+				$projekti_form .= '<option '.$selected_text.' value = "'.$projekt->ID.'">'.$projekt->post_title.'</option>';
+			}
+			
+			$projekti_form .='</select>';
+
+			echo '<div> '.$projekti_form.' </div>';	
+		}
+
+		function spremi_istaknute_projekte_zaposlenika($post_id){
+
+			$is_autosave = wp_is_post_autosave( $post_id );
+			$is_revision = wp_is_post_revision( $post_id );
+			$is_valid_nonce_istaknuti_projekti_zaposlenika = ( isset( $_POST[ 'istaknuti_projekti_zaposlenika_nonce' ] ) && wp_verify_nonce( $_POST[ 'istaknuti_projekti_zaposlenika_nonce' ], basename( __FILE__ ) ) ) ? 'true' : 'false';
+			 if ( $is_autosave || $is_revision || !$is_valid_nonce_istaknuti_projekti_zaposlenika) 
+			 {
+				 return;
+			 }
+		
+		
+			 if(!empty($_POST['projekti']))
+			{
+				//array u string
+				$projekti = implode(",", $_POST['projekti']);
+				update_post_meta($post_id, 'istaknuti_projekti_zaposlenika', $projekti);
+			}
+			else
+			{
+				delete_post_meta($post_id, 'istaknuti_projekti_zaposlenika');
+			}
+		}
+
+		add_action( 'save_post', 'spremi_istaknute_projekte_zaposlenika' );
+
+
+
+	function daj_htm_istaknuti_projekti_zaposlenika($projekt_id){
+		$projekti_ids = get_post_meta($projekt_id, 'istaknuti_projekti_zaposlenika', true);
+
+		$sHtml = "<div class='istaknuti_projekti_zaposlenika'>";
+
+		if( $projekti_ids != "")
+		{
+
+			$projekti_ids = explode(",", $projekti_ids);
+			foreach ($projekti_ids as $projekt_id) 
+			{
+				$projekt = get_post($projekt_id);
+
+				$projekt_slika = ""; 
+				if( get_the_post_thumbnail_url($projekt_id) )
+				{
+					$projekt_slika = get_the_post_thumbnail_url($projekt_id);
+				}
+				else
+				{
+					$projekt_slika = get_template_directory_uri() .'/img/portfolio/4.jpg';
+				}
+			
+				$projekt_naziv = $projekt->post_title;
+				$projekt_url = $projekt->guid;
+
+				$sHtml.= "
+					<a href='".$projekt_url."' class='projekt'>
+						<div class='projekt_slika' style='background-image: url(".$projekt_slika.")'></div>
+						<h6 class='projekt_slika'>".$projekt_naziv."</h6>
+					</a>
+				";
+
+			}
+
+		}
+		else
+		{
+			$sHtml .= "<p>Nema dodanih istaknutih projekata</p>";
+		}
+		$sHtml .= '</div>';
+
+		return $sHtml;
+} 
 
 ?>

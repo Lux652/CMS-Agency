@@ -11,14 +11,35 @@
 @import "css/style.css";
 
 
-#team .member h4 a{
-  color: #fff !important;
-}
+
 
 #team .member span{
   min-height:40px !important;
+}
+#team .member .pic img{
+  border-radius: 3px 3px 0 0 !important;
 }
 
 #portfolio, #team, #portfolio{
   background: none !important;
 }
+
+#portfolio .portfolio-item:hover .portfolio-overlay {
+  border-radius: 3px 3px 3px 3px !important;
+}
+
+#portfolio .portfolio-item img{
+  border-radius: 3px 3px 3px 3px !important;
+}
+
+
+#team .member .pic:hover img{
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  transition: all ease-in-out 0.4s;
+}
+
+.footer{
+  bottom: 0;
+}
+

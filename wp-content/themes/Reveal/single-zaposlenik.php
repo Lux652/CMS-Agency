@@ -50,7 +50,14 @@ if ( have_posts() )
           </div>
         </div>
       </div>
-    </header>
+		</header>
+		
+		<main>
+		<h2>Projekti</h2>
+		<?php
+	    	echo daj_htm_istaknuti_projekti_zaposlenika($post->ID);
+	    ?>
+	</main>
 
 <?php
 get_footer();
