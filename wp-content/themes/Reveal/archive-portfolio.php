@@ -1,27 +1,21 @@
 <?php
 	get_header();
 ?>
-    <section id="portfolio" class="wow fadeInUp">
-      <div class="container">
-        <div class="section-header">
-          <h2>Naš Portfolio</h2>   
-        </div>
+  <section id="portfolio" class="wow fadeInUp">
+    <div class="container">
+      <div class="section-header">
+        <h2>Naš Portfolio</h2>   
       </div>
+    </div>
 
-      <div class="container-fluid">
-        <div class="row no-gutters">
-        <?php
-            echo daj_portfolio();
-              ?>
-
-         
-
-        </div>
-
+    <div class="container-fluid">
+      <div class="row no-gutters">
+      <?php
+        echo daj_portfolio(); 
+      ?>  
       </div>
-    </section><!-- #portfolio -->
-
-    
+    </div>
+  </section><!-- #portfolio -->   
 <?php
 	get_footer();
 ?>

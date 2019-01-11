@@ -1,0 +1,45 @@
+/*
+  Theme Name: Reveal
+  Theme URL: https://bootstrapmade.com/reveal-bootstrap-corporate-template/
+  Author: BootstrapMade.com
+  License: https://bootstrapmade.com/license/
+*/
+
+
+@import "css/bootstrap.min.css";
+@import "css/font-awesome.min.css";
+@import "css/style.css";
+
+
+
+
+#team .member span{
+  min-height:40px !important;
+}
+#team .member .pic img{
+  border-radius: 3px 3px 0 0 !important;
+}
+
+#portfolio, #team, #portfolio{
+  background: none !important;
+}
+
+#portfolio .portfolio-item:hover .portfolio-overlay {
+  border-radius: 3px 3px 3px 3px !important;
+}
+
+#portfolio .portfolio-item img{
+  border-radius: 3px 3px 3px 3px !important;
+}
+
+
+#team .member .pic:hover img{
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  transition: all ease-in-out 0.4s;
+}
+
+.footer{
+  bottom: 0;
+}
+
