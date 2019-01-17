@@ -11,19 +11,27 @@ if ( have_posts() )
 }
 ?>
 
+<?php
+  				if( get_the_post_thumbnail_url($post->ID) )
+          {
+            $sIstaknutaSlika = get_the_post_thumbnail_url($post->ID);
+          }
+          else
+          {
+            $sIstaknutaSlika = get_template_directory_uri(). '/img/about-img.jpg';
+          }
+?>
+
 <section id="about" class="wow fadeInUp">
       <div class="container">
         <div class="row">
           <div class="col-lg-6 about-img">
-            <img src="img/about-img.jpg" alt="">
+            <img src="<?php echo $sIstaknutaSlika; ?>" alt="">
           </div>
-
           <div class="col-lg-6 content">
-			  
     <?php
     	the_content();
     ?>
-
           </div>
         </div>
 

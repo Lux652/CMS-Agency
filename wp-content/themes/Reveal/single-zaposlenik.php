@@ -31,34 +31,50 @@ if ( have_posts() )
 			$sIstaknutaSlika = get_template_directory_uri(). '/img/team-1.jpg';
 		}
 	}
+
+	$objavaContent=get_post_field('post_content', $objava->ID);
 }
 
 ?>
-
-    <!-- Page Header -->
-    <header class="masthead">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 col-md-10 mx-auto">
-            <div class="site-heading">
-
-              <h4><?php echo $sNaslovnaTitula; ?></h4>
-              <h1><?php echo $post->post_title; ?></h1>
-              <img src="<?php echo $sIstaknutaSlika ?>"/>
-            </div>
-          </div>
-        </div>
-      </div>
-		</header>
 		
 		<main>
-		<h2>Projekti</h2>
-		<?php
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8">
+					<h1><?php echo $post->post_title; ?></h1>
+					<h4><?php echo $sNaslovnaTitula; ?></h4>
+					<hr>
+					<h5>Bio</h5>
+					<div>
+						<p>					<?php echo $objavaContent ?></p>
+					</div>
+					<div>
+						<hr>
+						<h5>Istaknuti projekti</h5>
+						<div class="container">						<div class="row">
+						<?php
 	    	echo daj_htm_istaknuti_projekti_zaposlenika($post->ID);
 	    ?>
+						</div></div>
+
+
+
+					</div>
+
+					</div>
+
+
+					<div class="col-lg-4">
+						<div class="z-image">
+						<img src="<?php echo $sIstaknutaSlika ?>"/>
+						</div>
+					</div>
+				</div>
+			</div>
+
 	</main>
 
 <?php
 get_footer();
 ?>
+			

@@ -1,5 +1,5 @@
 
-<footer id="footer" class="footer">
+<footer id="footer" class="footer navbar-fixed-bottom">
     <div class="container">
       <div class="copyright">
         &copy; Copyright <strong>Reveal</strong>. All Rights Reserved

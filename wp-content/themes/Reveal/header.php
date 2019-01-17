@@ -3,7 +3,7 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title><?php the_title(); ?></title>
+	<title><?php bloginfo( 'name' ); wp_title(' | ')  ?></title>
 	<?php wp_head(); ?>
 </head>
 <body id="body">
@@ -12,7 +12,7 @@
   ============================-->
   <header id="header">
     <div class="container">
-    <?php 
+    <?php
       $sUrlNaslovnica = get_site_url();
     ?>
       <div id="logo" class="pull-left">
@@ -25,7 +25,7 @@
       <?php $args = array(
         'theme_location' => 'glavni-menu',
         'menu_class' => 'nav-menu',
-        'container' => 'ul',    
+        'container' => 'ul',
         'container_id' => false,
         'container_class' => 'nav'
       );
@@ -36,8 +36,8 @@
       </nav>
 
 
-      
- 
+
+
 
       <!-- <nav id="nav-menu-container">
         <ul class="nav-menu">

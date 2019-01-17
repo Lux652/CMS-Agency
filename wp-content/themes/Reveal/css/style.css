@@ -13,6 +13,7 @@ body {
   background: #fff;
   color: #444;
   font-family: "Open Sans", sans-serif;
+  min-height: calc(100vh - 89px);
 }
 
 a {
@@ -687,6 +688,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 #portfolio {
   background: #fff;
   padding: 30px 0;
+  min-height: calc(100vh - 90px);
 }
 
 #portfolio .portfolio-overlay {
@@ -1023,6 +1025,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   background: #f2f5f8;
   padding: 0 0 30px 0;
   font-size: 14px;
+
 }
 
 #footer .copyright {

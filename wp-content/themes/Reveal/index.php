@@ -2,6 +2,8 @@
 get_header();
 ?>
 
+
 <?php
-get_header();
+get_footer();
+get_archive-portfolio();
 ?>

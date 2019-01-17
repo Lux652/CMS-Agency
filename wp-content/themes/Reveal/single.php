@@ -15,32 +15,41 @@ if ( have_posts() )
 		else
 		{
 			$sIstaknutaSlika = get_template_directory_uri(). '/img/about-bg.jpg';
-		}
+    }
+    
+    $naziv = get_the_title( $post->ID );
+    $objavaDatum = get_the_date( $format,$post->ID );
+    $objavaVrijeme = get_the_time($format,$post->ID);
+    $autorImg = get_template_directory_uri(). '/img/pp.png';
+    $sUrlNaslovnica = get_site_url();
+    $objavaAutor=get_bloginfo();
 	}
 }
 
 
 ?>
 
-    <!-- Page Header -->
-    <header class="masthead" style="background-image: url(<?php echo $sIstaknutaSlika; ?>)">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 col-md-10 mx-auto">
-            <div class="site-heading">
-              <h1><?php echo $post->post_title; ?></h1>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
+<div class="container">
+<div class="row">
+ <!-- Post Content Column -->
+  <div class="col-lg-12">
+    <!-- Title -->
+    <h1 class="mt-4"><?php echo $naziv; ?></h1>
+    <p> <img class="author-img" src="<?php echo $autorImg; ?>"> <a href="<?php echo $sUrlNaslovnica;?>"><?php echo $objavaAutor; ?> </a></p>
+    <hr>
+   <!-- Date/Time -->
+    <p><?php echo $objavaDatum; ?> | <?php echo $objavaVrijeme; ?> </p>
+    <hr>
+    <img class="img-fluid rounded" src="<?php echo $sIstaknutaSlika; ?>" alt="">
 
-    <?php
-    	echo $post->post_content;
-    ?>
+    <hr>
+    <p class="lead"> <?php echo $post->post_content;?> </p>
 
+  </div>
 
+</div>
+
+</div>
 
 <?php
 get_footer();

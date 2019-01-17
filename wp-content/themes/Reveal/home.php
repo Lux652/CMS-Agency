@@ -9,19 +9,22 @@ if ( have_posts() )
 		the_post();
 	}
 }
-
-
 ?>
 
-  <section id="intro">
 
-<div class="intro-content">
-  <h2><?php echo get_bloginfo( 'description' ); ?></h2>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-8">
+		<?php
+            echo daj_blogpost();
+              ?>
+
+		</div>
+		<div class="col-md-4">
+			<?php get_sidebar('glavni-sidebar'); ?>
 </div>
-
-
-
-</section><!-- #intro -->
+	</div>
+</div>
 
 
 

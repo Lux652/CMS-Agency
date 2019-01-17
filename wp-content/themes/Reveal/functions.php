@@ -24,13 +24,13 @@
 	{
 		register_sidebar(
 			array (
-				'name' => "Glavni sidebar",
+				'name' => "Glavni sidebar yo",
 				'id' => 'glavni-sidebar',
 				'description' => "Glavni sidebar",
-				'before_widget' => '<div class="widget-content">',
+				'before_widget' => '<div class="card my-4">',
 				'after_widget' => "</div>",
-				'before_title' => '<h3 class="widget-title">',
-				'after_title' => '</h3>',
+				'before_title' => '<h5 class="card-header">',
+				'after_title' => '</h5>',
 			)
 		);
 	}
@@ -292,10 +292,7 @@ add_action( 'admin_enqueue_scripts', 'ucitaj_select2_projekti' );
 				$terms = wp_get_post_terms( $zaposlenik->ID, 'naslovna_titula', $trms  );
 
 				foreach($terms as $term){
-					
-						$kruh = print_r($terms,true);
-						$ZaposlenikTitula=implode(", ",$terms);
-						
+					$ZaposlenikTitula=implode(", ",$terms);					
 				}	
 
 
@@ -414,7 +411,7 @@ add_action( 'admin_enqueue_scripts', 'ucitaj_select2_projekti' );
 	function daj_htm_istaknuti_projekti_zaposlenika($projekt_id){
 		$projekti_ids = get_post_meta($projekt_id, 'istaknuti_projekti_zaposlenika', true);
 
-		$sHtml = "<div class='istaknuti_projekti_zaposlenika'>";
+		$sHtml = "<div class='istaknuti_projekti_zaposlenika col-md-12'>";
 
 		if( $projekti_ids != "")
 		{
@@ -438,10 +435,16 @@ add_action( 'admin_enqueue_scripts', 'ucitaj_select2_projekti' );
 				$projekt_url = $projekt->guid;
 
 				$sHtml.= "
+					<div class='col-md-3'>
 					<a href='".$projekt_url."' class='projekt'>
-						<div class='projekt_slika' style='background-image: url(".$projekt_slika.")'></div>
-						<h6 class='projekt_slika'>".$projekt_naziv."</h6>
-					</a>
+					<div class='projekt_slika'><img src=".$projekt_slika."></div>
+					<h6 class='projekt_slika'>".$projekt_naziv."</h6>
+				</a>
+				</div>
+
+					
+					
+
 				";
 
 			}
@@ -455,5 +458,57 @@ add_action( 'admin_enqueue_scripts', 'ucitaj_select2_projekti' );
 
 		return $sHtml;
 } 
+
+function daj_blogpost()
+{
+	$args = array(
+	'posts_per_page' => -1,
+	);
+
+	$objave = get_posts( $args );
+	$sIstaknutaSlika = "";			
+	
+	foreach ($objave as $objava)
+	{
+		
+		if( get_the_post_thumbnail_url($objava->ID) )
+		{
+			$sIstaknutaSlika = get_the_post_thumbnail_url($objava->ID);
+		}
+		else
+		{
+			$sIstaknutaSlika = get_template_directory_uri(). '/img/team-1.jpg';
+		}
+
+
+		$objavaUrl = $objava->guid;
+		$objavaNaziv = $objava->post_title;
+		$objavaAutor=get_bloginfo();
+		$autorImg = get_template_directory_uri(). '/img/pp.png';
+		$objavaDatum = get_the_date( $format,$objava->ID );
+		$objavaVrijeme = get_the_time($format,$objava->ID);
+		$objavaContent=get_post_field('post_content', $objava->ID);
+		$hehe= wp_trim_words( $objavaContent, 40 );
+		$sUrlNaslovnica = get_site_url();
+		
+		$sHtml .= '
+		<div class="objava-header">
+		<a href="'.$objavaUrl.'">
+		<h1 class="mt-4">'.$objavaNaziv.'</h1>
+		</a>
+		</div>
+		<div> <p> <img class="author-img" src="'.$autorImg.'"> <a href=" '.$sUrlNaslovnica.'">'.$objavaAutor.'</a>  '.$objavaDatum.' '."|".' '.$objavaVrijeme.'</p></div>
+		<hr>
+		<img class="objava-img" src="'.$sIstaknutaSlika.'" alt="">
+		<hr>
+		<p>'.$hehe.'</p>
+		<hr>
+		<br>
+		<br>		
+	';				
+	}
+	return $sHtml;
+}
+
 
 ?>
