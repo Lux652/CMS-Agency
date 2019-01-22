@@ -6,7 +6,7 @@ if ( have_posts() )
 {
 	while ( have_posts() )
 	{
-		the_post();
+    the_post();
 		$sIstaknutaSlika = "";
 		$args = array(
 			'fields' => 'names'
@@ -36,7 +36,7 @@ if ( have_posts() )
 
 ?>
 
-    <!-- Page Header -->
+    <!-- Page Header
     <header class="masthead">
       <div class="overlay"></div>
       <div class="container">
@@ -51,7 +51,37 @@ if ( have_posts() )
           </div>
         </div>
       </div>
-		</header>
+    </header> -->
+    
+    <div class="container single-portfolio">
+
+    <h1><?php echo $post->post_title; ?></h1>
+    <h4><?php echo $Tip; ?></h4>
+
+
+    <div class="row">
+
+      <div class="col-md-8">
+      <img class="projekt_img img-fluid" src="<?php echo $sIstaknutaSlika ?>"/>
+      <div>
+      <?php echo get_post_gallery(); ?>
+        
+      </div>
+      </div>
+
+      <div class="col-md-4">
+        <h3 class="my-3">Opis projekta</h3>
+        <p><?php the_content(); ?></p>
+
+        <h3 class="my-3">Zaposlenici na projektu</h3>
+       
+
+      </div>
+    </div>
+
+
+
+    </div>
 
 
 

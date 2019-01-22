@@ -22,19 +22,35 @@ if ( have_posts() )
           }
 ?>
 
-<section id="about" class="wow fadeInUp">
+<!-- <section id="about">
       <div class="container">
         <div class="row">
-          <div class="col-lg-6 about-img">
+          <div class="col-md-4 about-img">
             <img src="<?php echo $sIstaknutaSlika; ?>" alt="">
           </div>
-          <div class="col-lg-6 content">
+          <div class="col-lg-8 content">
     <?php
-    	the_content();
+      the_content();
     ?>
           </div>
         </div>
 
+      </div>
+    </section> -->
+
+
+    <section id="about">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 about-img">
+            <img src="<?php echo $sIstaknutaSlika; ?>" alt="">
+   
+          </div>
+          <div class="col-lg-6">
+          
+            <?php the_content(); ?>
+          </div>
+        </div>
       </div>
     </section>
 

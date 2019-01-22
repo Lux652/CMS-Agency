@@ -4,12 +4,12 @@
     <section id="portfolio" class="wow fadeInUp">
       <div class="container">
         <div class="section-header">
-          <h2>Naš Portfolio</h2>   
+          <h2>Naši radovi</h2>   
         </div>
       </div>
 
       <div class="container-fluid">
-        <div class="row no-gutters">
+        <div class="row">
         <?php
             echo daj_portfolio();
               ?>

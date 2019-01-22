@@ -9,13 +9,10 @@
 @import "css/bootstrap.min.css";
 @import "css/font-awesome.min.css";
 @import "css/style.css";
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700');
 
 
 
-
-#team .member span{
-  min-height:40px !important;
-}
 
 #portfolio, #team, #portfolio{
   background: none !important;
@@ -28,19 +25,7 @@
 #portfolio .portfolio-item img{
   border-radius: 3px 3px 3px 3px !important;
 }
-#team .member .pic img{
-  border-radius: 3px 3px 0 0 !important;
-  transition: all ease-in-out 1s;
 
-  width: 100% !important;
-  height: 290px !important;
-
-}
-
-.projekt_slika img{
-  height:120px;
-  width:auto;
-}
 
 #team .member .pic:hover img{
   -webkit-transform: scale(1.1);
@@ -48,7 +33,9 @@
   transition: all ease-in-out 0.4s;
 }
 
-
+.portfolio_container{
+  padding: 20px 20px 20px 20px !important;
+}
 
 
 img.objava-img{
@@ -61,21 +48,109 @@ img.author-img{
 height: 2rem;
 }
 .card-header{
-  background-color:#0c2e8a;
-  color:white;
+  background-color:#12355b;
+  color:#f1faee;
 }
-.card-header h5{
-  color:white;
-}
+
 .card ul{
   list-style-type: none;
   padding:10px;
 }
 .card ul li a{
   font-weight: 700 !important;
+  color:#12355b;
+  transition:0.5s;
+}
+.card ul li a:hover,
+a:active,
+a:focus {
+  color:#e63946;
 }
 
+
+
 .mt-4{
-  color:#0c2e8a !important;
+  color:#f1faee !important;
   font-weight:bold;
 }
+
+card{
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.projekt_slika .projekt img{
+  width:200px;
+  height:auto;
+}
+
+.z-image img{
+  width:400px;
+  height:auto;
+  padding-top:120px;
+}
+
+.single-portfolio h1{
+  color:#f1faee;
+  font-weight: bold;
+}
+
+.single-portfolio h4, h3{
+  color:#e63946;
+}
+
+
+#mobile-menu{
+  display:none;
+}
+#about strong{
+  color:#e63946;
+}
+
+
+
+@media only screen and (max-width: 767px) {
+  header, main{ width:90%}
+    
+    /* mobile menu */
+    #mobile-menu{ display: block }
+    
+    .mobile1, .mobile2, .mobile3{
+      width: 35px;
+      height: 5px;
+      background-color: #fff;
+      margin: 6px 0;
+      float: right;
+      text-align: center;
+      color: rgb(0, 0, 0);
+      text-decoration:none;
+    }
+  
+    nav ul, nav:active ul { 
+  
+      display: none;
+      position: absolute;
+      padding: 20px;
+      background: rgb(250, 250, 250);
+      right: 0px;
+      top: 35px;
+      width: 50%;
+      border-radius: 4px 0 4px 4px;
+      color:black;
+  
+    }
+  
+    nav li {
+      list-style-type:none;
+      text-align: center;
+      width: 100%;
+      padding: 10px 0;
+      margin: 0;
+    }
+  
+    nav li a{ color:black !important; text-decoration:none !important; display:block}
+    nav:hover ul { display: block; }
+  
+    }
+    
+  

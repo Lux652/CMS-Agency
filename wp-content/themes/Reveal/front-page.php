@@ -15,17 +15,24 @@ if ( have_posts() )
 
   <section id="intro">
 
-<div class="intro-content">
-	<h2><?php echo get_bloginfo( 'description' ); ?></h2>
-	<div>
-        <a href="o-nama" class="btn-get-started scrollto">O nama</a>
-        <a href="portfolio" class="btn-projects scrollto">Naši projekti</a>
-      </div>
-</div>
+<?php the_content(); ?>
 
+</section>
 
+<section id="services">
+      <div class="container">
+        <div class="section-header">
+          <h2>Naše usluge</h2>
+        </div>
 
-</section><!-- #intro -->
+        <div class="row">
+        <?php
+            echo daj_usluge();
+              ?>
+
+          </div>
+</section>
+
 
 
 
